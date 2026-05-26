@@ -1,11 +1,13 @@
+const { createClient } = supabase;
+
 const SUPABASE_URL =
   "https://njrcmldbrjqflonrknns.supabase.co";
 
 const SUPABASE_KEY =
   "sb_publishable_UiO1FSoUQNJ5OdshuqaNpQ_IhqTafAL";
 
-const supabase =
-  window.supabase.createClient(
+const db =
+  createClient(
     SUPABASE_URL,
     SUPABASE_KEY
   );
@@ -74,35 +76,41 @@ btnVou.addEventListener(
 
 btnVou.addEventListener(
   "click",
-  async () => {
+  async function () {
 
     imagemBoa.src =
       "ELIXIR_EMPTY.png";
 
 
-    setTimeout(async () => {
+    setTimeout(
+      async function () {
 
-      const nome =
-        prompt("Digite seu nome:");
+        const nome =
+          prompt("Digite seu nome:");
 
-
-
-      await supabase
-        .from("confirmacoes")
-        .insert([
-          {
-            nome: nome,
-            resposta: "renovou"
-          }
-        ]);
+        if (!nome) {
+          return;
+        }
 
 
-      resultado.innerHTML =
-        "Presença confirmada, " +
-        nome +
-        " 🎉";
+        await db
+          .from("confirmacoes")
+          .insert([
+            {
+              nome: nome,
+              resposta: "renovou"
+            }
+          ]);
 
-    }, 300);
+
+        resultado.innerHTML =
+          "Presença confirmada, " +
+          nome +
+          " 🎉";
+
+      },
+      300
+    );
 
   }
 );
@@ -155,7 +163,7 @@ btnFim.addEventListener(
 
 btnFim.addEventListener(
   "click",
-  () => {
+  function () {
 
     coracaoTriste.src =
       "HEART_BROKEN.png";
