@@ -196,13 +196,13 @@ btnFim.addEventListener(
   nome +
   " encerrou oficialmente a amizade 😔 <br><br>" +
 
-  "Até logo, até mais ver, bon voyage, " +
+  "Até logo, até mais ver, bon voyage,<br><br> " +
 
-  "arrivederci, até mais, adeus, boa viagem, " +
+  "arrivederci, até mais, adeus, boa viagem,<br><br> " +
 
-  "vá em paz, que a porta bata onde o sol não bate, " +
+  "vá em paz, que a porta bata onde o sol não bate,<br><br> " +
 
-  "não volte mais aqui, hasta la vista baby, " +
+  "não volte mais aqui, hasta la vista baby,<br><br> " +
 
   "escafeda-se, e saia logo daqui.";
 
