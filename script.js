@@ -1,3 +1,16 @@
+const SUPABASE_URL =
+  "https://njrcmldbrjqflonrknns.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_UiO1FSoUQNJ5OdshuqaNpQ_IhqTafAL";
+
+const supabase =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
 const imagemBoa =
   document.getElementById("imagemBoa");
 
@@ -13,12 +26,9 @@ const btnFim =
 const resultado =
   document.getElementById("resultado");
 
-let elixirUsado = false;
-let coracaoQuebrado = false;
-
 
 /* ------------------------- */
-/* ANIMAÇÃO ELIXIR */
+/* ELIXIR */
 /* ------------------------- */
 
 function aumentarElixir() {
@@ -64,18 +74,28 @@ btnVou.addEventListener(
 
 btnVou.addEventListener(
   "click",
-  () => {
-
-    elixirUsado = true;
+  async () => {
 
     imagemBoa.src =
       "ELIXIR_EMPTY.png";
 
 
-    setTimeout(() => {
+    setTimeout(async () => {
 
       const nome =
         prompt("Digite seu nome:");
+
+
+
+      await supabase
+        .from("confirmacoes")
+        .insert([
+          {
+            nome: nome,
+            resposta: "renovou"
+          }
+        ]);
+
 
       resultado.innerHTML =
         "Presença confirmada, " +
@@ -89,7 +109,7 @@ btnVou.addEventListener(
 
 
 /* ------------------------- */
-/* ANIMAÇÃO CORAÇÃO */
+/* CORAÇÃO */
 /* ------------------------- */
 
 function aumentarCoracao() {
@@ -136,8 +156,6 @@ btnFim.addEventListener(
 btnFim.addEventListener(
   "click",
   () => {
-
-    coracaoQuebrado = true;
 
     coracaoTriste.src =
       "HEART_BROKEN.png";
