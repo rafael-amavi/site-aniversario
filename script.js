@@ -163,13 +163,42 @@ btnFim.addEventListener(
 
 btnFim.addEventListener(
   "click",
-  function () {
+  async function () {
 
     coracaoTriste.src =
       "HEART_BROKEN.png";
 
-    resultado.innerHTML =
-      "A amizade foi oficialmente encerrada 😔";
+
+    setTimeout(
+      async function () {
+
+        const nome =
+          prompt(
+            "Digite seu nome antes de encerrar a amizade:"
+          );
+
+        if (!nome) {
+          return;
+        }
+
+
+        await db
+          .from("confirmacoes")
+          .insert([
+            {
+              nome: nome,
+              resposta: "encerrou"
+            }
+          ]);
+
+
+        resultado.innerHTML =
+          nome +
+          " encerrou oficialmente a amizade 😔";
+
+      },
+      300
+    );
 
   }
 );
