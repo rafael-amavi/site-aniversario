@@ -193,8 +193,18 @@ btnFim.addEventListener(
 
 
         resultado.innerHTML =
-          nome +
-          " encerrou oficialmente a amizade 😔";
+  nome +
+  " encerrou oficialmente a amizade 😔 <br><br>" +
+
+  "Até logo, até mais ver, bon voyage, " +
+
+  "arrivederci, até mais, adeus, boa viagem, " +
+
+  "vá em paz, que a porta bata onde o sol não bate, " +
+
+  "não volte mais aqui, hasta la vista baby, " +
+
+  "escafeda-se, e saia logo daqui.";
 
       },
       300
